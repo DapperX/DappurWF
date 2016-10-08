@@ -1,0 +1,2 @@
+.tpl仅包含对所需head的注册和对body标签内DOM元素的输出
+.tplx完整包含一个html页面的全部要素

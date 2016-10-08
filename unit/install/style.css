@@ -1,0 +1,31 @@
+body{
+	padding-top: 50px;
+}
+
+.menu-fixed{
+	position: fixed;
+}
+.menu-fixed h3,.menu-fixed h4{
+	padding-left: 15px;
+}
+
+i.glyphicon-ok{
+	color: #5cb85c;
+}
+
+.s1w1.btn-link{
+	color: #d9534f
+}
+.s1w1.btn-link:hover{
+	color: #c9302c
+}
+
+@media(min-width: 768px){
+.menu-fixed{width: 187px;}
+}
+@media(min-width: 992px){
+.menu-fixed{width: 240px;}
+}
+@media(min-width: 1200px){
+.menu-fixed{width: 270px;}
+}
