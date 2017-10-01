@@ -20,9 +20,13 @@
 			$className=str_replace(__NAMESPACE__."\\","",get_class($this));
 			$path=UNIT_DIR.$className.'/';
 			$conf=$path.$className.'.conf.php';
+			echo '<strong>conf: ',$conf,'</strong><br/>';
 			
 			$this->config['__configPath']=$path;
-			if(is_file($conf)) array_merge($this->config,include($conf));
+			if(is_file($conf)){
+				$this->config=array_merge($this->config,include($conf));
+				var_dump($this->config);
+			}
 				else error(['errorType'=>DPWF_ERR|DPWF_FILE_UNREADABLE,
 							'failedConf'=>$conf]);
 		}

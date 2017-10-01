@@ -12,3 +12,16 @@
 	function normal_path($path){
 		return str_replace('\\','/',$path);
 	}
+
+	function str_split_once($s,$separator){
+		$offset=strpos($s,$separator,1);
+			if($offset===false){
+				$mainName=$s;
+				$sub='';
+			}
+			else{
+				$mainName=substr($s,0,$offset);
+				$sub=substr($s,$offset+1,strlen($s)-$offset);
+			}
+		return [$mainName,$sub];
+	}

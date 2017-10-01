@@ -9,9 +9,9 @@
 			{
 				$GLOBALS['DPWF_APP_PARAM']=$appParam;
 				include(APP_DIR."$appName/index.php");
+				return $GLOBALS['DPWF_APP_RTN'];
 			}
-			else
-				error(['errorType'=>DPWF_ERR|DPWF_APP_MISSING,
-						'appName'=>$appName]);
+			error(['errorType'=>DPWF_ERR|DPWF_APP_MISSING,
+					'appName'=>$appName]);
 		}
 	}

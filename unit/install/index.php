@@ -5,7 +5,7 @@
 		<meta http-equiv="Content-Language" content="zh-CN"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 		<meta name="robots" content="noindex,nofollow"/>
-		 <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>DappurWF安装程序</title>
 		<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="style.css"/>

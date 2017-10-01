@@ -11,6 +11,32 @@
 	define(DPWF_REALROOT,normal_path($_SERVER['DOCUMENT_ROOT']).$t);
 	unset($t);
 
+	class controller_base{
+		protected $appName='';
+
+		public function __construct(){}
+
+		public function run($s){
+			echo 'controller_base run: ',$s,'<br/>';
+			$t=str_split_once($s,'&');
+			parse_str($t[1],$param);
+			$param=array_merge($param,$_GET,$_POST);
+			return call_user_func_array([$this,$t[0]],$param);
+		}
+
+		protected function display($templateName,$viewData){
+			var_dump($viewData);
+			$t=$GLOBALS[$this->appName];
+			$viewData['appWebDir']=DPWF_WEBROOT.'index.php/'.$this->appName.'/';
+			if(!isset($viewData['templateDir'])) $viewData['templateDir']=$t['DIR_TEMPLATE'];
+			if(!isset($viewData['staticWebDir'])) $viewData['staticWebDir']=$t['WEBDIR_STATIC'];
+			$GLOBALS['DPWF_VIEWDATA']=$viewData;
+			$templatePath=$t['DIR_TEMPLATE'].$templateName;
+			if(file_exists($templatePath)) include($templatePath);
+				else echo 'template not found: ',$templatePath,'<br/>';
+		}
+	}
+
 	function error($info){
 		log::insert($info);
 		header('HTTP/1.1 404 Not Found');

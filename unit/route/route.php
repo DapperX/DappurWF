@@ -6,18 +6,9 @@
 	class route extends \DPWF\unit\unit_base{
 		static public function run($s){
 			echo "Route: run $s<br/>";
-			$offset=strpos($s,'/',1);
-			if($offset===false){
-				$appName=$s;
-				$sub='';
-			}
-			else{
-				$appName=substr($s,0,$offset);
-				$sub=substr($s,$offset+1,strlen($s)-$offset);
-			}
-			//var_dump($s);
-			echo 'appName: ',$appName,'<br/>';
-			echo 'sub: ',$sub,'<br/>';
-			\DPWF\app\app::load($appName,$sub);
+			$t=str_split_once($s,'/');
+			echo 'appName: ',$t[0],'<br/>';
+			echo 'sub: ',$t[1],'<br/>';
+			return \DPWF\app\app::load($t[0],$t[1]);
 		}
 	}

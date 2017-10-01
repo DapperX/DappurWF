@@ -6,7 +6,8 @@
 
 	require(DPWF_INSTALL.'install.php');
 	DPWF_check_installed();
-*/
+*/	ob_start();
+	
 	require './lib/base.php';
 	require 'conf.php';
 	require LIB_DIR.'classLoader.php';
@@ -14,6 +15,8 @@
 	require APP_DIR.'app.php';
 
 //	install::check();
+	var_dump($_POST);
+	var_dump($_GET);
 
 	echo '*******<br/>';
 	echo 'DPWF_HTTP: ',DPWF_HTTP.'<br/>';
@@ -25,5 +28,6 @@
 
 	$s=isset($_SERVER['PATH_INFO'])?ltrim($_SERVER['PATH_INFO'],'/'):'';
 
+	global $unitManage;
 	$unitManage=new unit\unit;
-	$unitManage->get_instance('route')->run($s);
+	return $unitManage->get_instance('route')->run($s);
