@@ -6,9 +6,9 @@
 	//if(!isset($viewData['__js'])) $viewData['__js']=[];
 	$viewData['__css'][]='https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css';
 	$viewData['__js'][]='https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js';
-	$viewData['__js'][]='//'.$viewData['staticWebDir'].'js/Parser.js';
+	$viewData['__js'][]='//'.$viewData['staticWebDir'].'/js/Parser.js';
 ?>
-<?php require($viewData['templateDir'].'header.tpl'); ?>
+<?php require($viewData['templateDir'].'/header.tpl'); ?>
 
 <div class="wrap">
 		<p>Title: <input type="text" id="title"/></p>
@@ -46,4 +46,4 @@
 	new Editor($("#text-input")[0],$("#preview")[0]);
 </script>
 
-<?php require($viewData['templateDir'].'footer.tpl'); ?>
+<?php require($viewData['templateDir'].'/footer.tpl'); ?>

@@ -2,19 +2,15 @@
 	ob_end_clean();
 	$viewData=$GLOBALS['DPWF_VIEWDATA'];
 	$post=$viewData['post'];
+	$viewData['__css'][]="//$viewData[staticWebDir]/css/view.css";
 	$viewData['__css'][]='https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css';
 	$viewData['__js'][]='https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js';
 	//$viewData['__js'][]='//'.$viewData['staticWebDir'].'js/Parser.js';
 ?>
-<?php require($viewData['templateDir'].'header.tpl'); ?>
+<?php require($viewData['templateDir'].'/header.tpl'); ?>
 
-<nav class="nav" role="navigation">	
-	<div class="menu">
-		<ul>
-			<li id="nvabar-item-index"><a href="http://local_ubuntu/blog/">首页</a></li><li id="navbar-page-2"><a href="http://local_ubuntu/blog/?id=2">留言本</a></li>		</ul>
-	</div>	
-</nav><div class="wrap">
-			<article class="post cate7  auth1">
+<div class="content">
+	<article class="post cate7 auth1">
 	<h2><?php echo $post['title'];?></h2>
 	<div class="postmeta">
 		<span> 日期：2015-10-21</span>
@@ -70,4 +66,4 @@
 	</article>			
 </div>
 
-<?php require($viewData['templateDir'].'footer.tpl'); ?>
+<?php require($viewData['templateDir'].'/footer.tpl'); ?>

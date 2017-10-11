@@ -20,9 +20,9 @@
 
 		public function load($className){
 			if(class_exists($this->namespace.'\\'.$className)) return;
-			echo get_class($this)," is loading ".$this->dir."$className/$className.php<br/>";
-			if(is_file($this->dir."$className/$className.php"))
-				include($this->dir."$className/$className.php");
+			echo get_class($this)," is loading ".$this->dir."/$className/$className.php<br/>";
+			if(is_file($this->dir."/$className/$className.php"))
+				include($this->dir."/$className/$className.php");
 			else
 				echo 'file not found<br/>';
 				/*

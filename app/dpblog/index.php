@@ -5,7 +5,7 @@
 
 	require_once __DIR__.'/conf.php';
 	echo 'dpblog_CONTROLLER_DIR: ',$GLOBALS['dpblog']['DIR_CONTROLLER'],'<br/>';
-	require_once $GLOBALS['dpblog']['DIR_CONTROLLER'].'controller.php';
+	require_once $GLOBALS['dpblog']['DIR_CONTROLLER'].'/controller.php';
 
 	$controllerManage=&$GLOBALS['dpblog']['controllerManage'];
 	if(!isset($controllerManage)) $controllerManage=new controller;

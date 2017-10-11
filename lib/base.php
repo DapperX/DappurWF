@@ -6,7 +6,7 @@
 
 	define(DPWF_HTTP,is_https()?'https://':'http://');
 	define(DPWF_HOST,$_SERVER['HTTP_HOST']);
-	$t=dirname($_SERVER['SCRIPT_NAME']).'/';
+	$t=dirname($_SERVER['SCRIPT_NAME']);
 	define(DPWF_WEBROOT,DPWF_HOST.$t);
 	define(DPWF_REALROOT,normal_path($_SERVER['DOCUMENT_ROOT']).$t);
 	unset($t);
@@ -27,11 +27,11 @@
 		protected function display($templateName,$viewData){
 			var_dump($viewData);
 			$t=$GLOBALS[$this->appName];
-			$viewData['appWebDir']=DPWF_WEBROOT.'index.php/'.$this->appName.'/';
+			$viewData['appWebDir']=DPWF_WEBROOT.'/index.php/'.$this->appName;
 			if(!isset($viewData['templateDir'])) $viewData['templateDir']=$t['DIR_TEMPLATE'];
 			if(!isset($viewData['staticWebDir'])) $viewData['staticWebDir']=$t['WEBDIR_STATIC'];
 			$GLOBALS['DPWF_VIEWDATA']=$viewData;
-			$templatePath=$t['DIR_TEMPLATE'].$templateName;
+			$templatePath=$t['DIR_TEMPLATE'].'/'.$templateName;
 			if(file_exists($templatePath)) include($templatePath);
 				else echo 'template not found: ',$templatePath,'<br/>';
 		}

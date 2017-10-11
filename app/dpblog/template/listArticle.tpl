@@ -1,21 +1,16 @@
 <?php
 	ob_end_clean();
 	$viewData=$GLOBALS['DPWF_VIEWDATA'];
+	$viewData['__css'][]="//$viewData[staticWebDir]/css/list.css";
 ?>
-<?php require($viewData['templateDir'].'header.tpl'); ?>
+<?php require($viewData['templateDir'].'/header.tpl'); ?>
 
-<nav class="nav" role="navigation">	
-	<div class="menu">
-		<ul>
-			<li id="nvabar-item-index"><a href="http://local_ubuntu/blog/">首页</a></li><li id="navbar-page-2"><a href="http://local_ubuntu/blog/?id=2">留言本</a></li>		</ul>
-	</div>	
-</nav>
-<div class="wrap">
+<div class="content">
 <section>
 <?php
 	foreach($viewData['posts'] as $post){
 		echo '<article class="post">';
-		echo '<h2><a href="//',$viewData['appWebDir'],'article/show?id=',$post['id'],'" title="',$post['title'],'" target="_blank">',$post['title'],'</a></h2>';
+		echo '<h2><a href="//',$viewData['appWebDir'],'/article/show?id=',$post['id'],'" title="',$post['title'],'" target="_blank">',$post['title'],'</a></h2>';
 		echo '<div class="postmeta">';
 		echo '<span>日期：',$post['postTime'],'</span>';
 		echo '<span>分类：<a href="http://local_ubuntu/blog/?cate=1" title="未分类">未分类</a></span>';
@@ -25,7 +20,7 @@
 		echo '</div>';
 		echo '<div class="entry">';
 		echo $post['intro'];
-		echo '<p class="more"><a href="//',$viewData['appWebDir'],'article/show?id=',$post['id'],'" title="',$post['title'],'">阅读全文</a></p>';
+		echo '<p class="more"><a href="//',$viewData['appWebDir'],'/article/show?id=',$post['id'],'" title="',$post['title'],'">阅读全文</a></p>';
 		echo '</div>';
 		echo '</article>';
 	}
@@ -39,4 +34,4 @@
 </div>
 
 
-<?php require($viewData['templateDir'].'footer.tpl'); ?>
+<?php require($viewData['templateDir'].'/footer.tpl'); ?>

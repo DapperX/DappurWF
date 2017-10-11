@@ -10,9 +10,9 @@
 	
 	require './lib/base.php';
 	require 'conf.php';
-	require LIB_DIR.'classLoader.php';
-	require UNIT_DIR.'unit.php';
-	require APP_DIR.'app.php';
+	require LIB_DIR.'/classLoader.php';
+	require UNIT_DIR.'/unit.php';
+	require APP_DIR.'/app.php';
 
 //	install::check();
 	var_dump($_POST);

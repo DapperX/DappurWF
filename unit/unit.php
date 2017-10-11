@@ -18,8 +18,8 @@
 		//unit_base::__construct()用于提供对基类成员的初始化（包括主配置文件的读入）
 		public function __construct(){
 			$className=str_replace(__NAMESPACE__."\\","",get_class($this));
-			$path=UNIT_DIR.$className.'/';
-			$conf=$path.$className.'.conf.php';
+			$path=UNIT_DIR.'/'.$className;
+			$conf=$path.'/'.$className.'.conf.php';
 			echo '<strong>conf: ',$conf,'</strong><br/>';
 			
 			$this->config['__configPath']=$path;
