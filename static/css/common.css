@@ -1,0 +1,75 @@
+/*
+* 参考了部分来自http://www.boke8.net/zblog-php-plain.html的设计
+*/
+
+html,body{margin:0;padding:0;}
+body{background:#fff;font:100%/1.75 'Microsoft Yahei',tahoma,Arial;}
+a{text-decoration:none; color:#00A0F0;}
+.clear{clear:both;}
+a img{border:none;}
+
+.banner{
+	background:#00A0F0;
+	left:0;
+	top:0;
+	height:40px;
+	width:100%;
+	position:fixed;
+	border-bottom:1px solid #ddd;
+}
+
+.container{
+	width: 85%;
+	margin: 45px auto 0 auto;
+	/*background:rgba(180,180,180,0.5);*/
+}
+
+.header{padding:0 10%;margin-top:5px;}
+.header div{display:inline-block;vertical-align:bottom;}
+.header .logo{width:170px; height:40px;}
+.header .logo img{width:100%; height:auto;}
+
+.header .menu{padding-bottom:8px;}
+.header .menu ul{list-style:none; width:auto; overflow:hidden; margin:0;}
+.header .menu ul li{padding:0 20px; float:left;}
+.header .menu ul li a{text-decoration:none; color:#FFF;}
+
+/*.nav,.content{margin-top:60px; float:left;}*/
+.nav{/*background-color:#0F0;*/ width:14%; border-right:1px solid #dedede; position:fixed; margin-left:2%;}
+/*.nav ul{border-bottom:1px solid #fff;}*/
+.nav a{display:block; padding-left:10%; height:40px; line-height:40px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:#555;}
+.nav a:hover{background:#eee; border-right:4px solid #dedede; margin-right:-1px;}
+
+.content{/*background:#F00;*/ width:70%; margin-left:23%;}
+
+/*footer*/
+.footer{clear:both; padding:40px 25% 0 25%; font-size:0.75em; color:#888; text-align:center;}
+.footer p{margin:5px 0;}
+.friendlinks{overflow:hidden;}
+.footer ul{padding:0;}
+.friendlinks ul li{display:inline-block; margin:2px 5px;}
+/*media*/
+/*@media only screen and (max-width:640px){
+	.header .logo{
+		float:none;
+		margin:0 auto;
+		display:block;		
+	}
+	.btn,
+	.nav{
+		display:none;
+		width:50%;
+		opacity:1;
+	}
+	.wrap{
+		padding:70px 3% 30px 3%
+	}
+	.footer{
+	    padding:0px 5%;
+	}
+}
+@media only screen and (max-width:480px){
+	.post .postmeta{
+		display:none;
+	}
+}
