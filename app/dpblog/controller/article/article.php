@@ -41,15 +41,41 @@
 			$this->display('listArticle.tpl',['posts'=>$posts]);
 		}
 
-		public function modify(){
-			$this->display('modifyArticle.tpl',['postId'=>0]);
+		public function create(){
+			$this->modify_(NULL);
 		}
 
-		public function post($title,$content_md,$content_html){
+		public function modify($id){
+			$this->modify_($id);
+		}
+
+		function modify_($id){
+			$post = ['id'=>0];
+			if(!is_null($id)){
+				global $unitManage;
+				$db = $unitManage->get_instance('database')->getDb($this->appName);
+				$sql = 'SELECT id,title,content_md FROM dpblog_post WHERE id='.$id;
+
+				$result = $db->query($sql);
+				if($result==false){
+					echo '<strong>blog::modify_: Cannot find article with ID'.$id.'!</strong><br/>';
+					exit();
+				}
+				$post = $result->fetch_assoc();
+			}
+			$this->display('modifyArticle.tpl',['post'=>$post]);
+		}
+
+		public function post($id,$title,$content_md,$content_html){
 			global $unitManage;
 			$db=$unitManage->get_instance('database')->getDb($this->appName);
 
-			$stmt=$db->prepare('INSERT INTO dpblog_post (postTime,intro,title,content_md,content_html) VALUES ("1970-01-01","intro",?,?,?)');
+			if($id==0){
+				$stmt=$db->prepare('INSERT INTO dpblog_post (postTime,intro,title,content_md,content_html) VALUES ("1970-01-01","intro",?,?,?)');
+			}
+			else{
+				$stmt=$db->prepare('UPDATE dpblog_post SET title=?, content_md=?, content_html=? WHERE id='.$id);
+			}
 			$stmt->bind_param('sss',$title,$content_md,$content_html);
 			$stmt->execute();
 
