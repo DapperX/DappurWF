@@ -15,8 +15,11 @@
 <div class="wrap">
 		<p>Title: <input type="text" id="title"/></p>
 		
+		<p>Abstract</p>
+		<textarea id="text-intro" name="intro" rows="6" cols="60"><?php echo $post["intro"];?></textarea>
+
 		<p>Content</p>
-		<textarea id="text-input" name="content" oninput="this.editor.update()" rows="6" cols="60"><?php echo $post["content_md"];?></textarea>
+		<textarea id="text-content" name="content" oninput="this.editor.update()" rows="16" cols="60"><?php echo $post["content_md"];?></textarea>
 		<button id="submit">Submit</button>
 		<div id="preview"></div>
 </div>
@@ -28,7 +31,8 @@
 			{
 				'id': <?php echo $post["id"];?>,
 				'title': $("#title")[0].value,
-				'content_md': $("#text-input")[0].value,
+				'intro': $("#text-intro")[0].value,
+				'content_md': $("#text-content")[0].value,
 				'content_html': $("#preview")[0].innerHTML
 			},
 			function(result){
@@ -47,7 +51,7 @@
 		input.editor = this;
 		this.update();
 	}
-	new Editor($("#text-input")[0],$("#preview")[0]);
+	new Editor($("#text-content")[0],$("#preview")[0]);
 	$('#title').val('<?php echo $post["title"];?>');
 </script>
 

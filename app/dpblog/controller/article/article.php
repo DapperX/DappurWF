@@ -41,7 +41,7 @@
 			$this->display('listArticle.tpl',['posts'=>$posts]);
 		}
 
-		public function create(){
+		public function new(){
 			$this->modify_(NULL);
 		}
 
@@ -54,7 +54,7 @@
 			if(!is_null($id)){
 				global $unitManage;
 				$db = $unitManage->get_instance('database')->getDb($this->appName);
-				$sql = 'SELECT id,title,content_md FROM dpblog_post WHERE id='.$id;
+				$sql = 'SELECT id,title,intro,content_md FROM dpblog_post WHERE id='.$id;
 
 				$result = $db->query($sql);
 				if($result==false){
@@ -66,17 +66,17 @@
 			$this->display('modifyArticle.tpl',['post'=>$post]);
 		}
 
-		public function post($id,$title,$content_md,$content_html){
+		public function post($id,$title,$intro,$content_md,$content_html){
 			global $unitManage;
 			$db=$unitManage->get_instance('database')->getDb($this->appName);
 
 			if($id==0){
-				$stmt=$db->prepare('INSERT INTO dpblog_post (postTime,intro,title,content_md,content_html) VALUES ("1970-01-01","intro",?,?,?)');
+				$stmt=$db->prepare('INSERT INTO dpblog_post (postTime,title,intro,content_md,content_html) VALUES ("1970-01-01",?,?,?,?)');
 			}
 			else{
-				$stmt=$db->prepare('UPDATE dpblog_post SET title=?, content_md=?, content_html=? WHERE id='.$id);
+				$stmt=$db->prepare('UPDATE dpblog_post SET title=?, intro=?, content_md=?, content_html=? WHERE id='.$id);
 			}
-			$stmt->bind_param('sss',$title,$content_md,$content_html);
+			$stmt->bind_param('ssss',$title,$intro,$content_md,$content_html);
 			$stmt->execute();
 
 			$stmt->close();
